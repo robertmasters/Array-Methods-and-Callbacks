@@ -12,32 +12,53 @@ console.log('its working');
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
-function getData(year, stage, output){
-    for (let i =0;i<fifaData.length;i++){
-        // console.log('-----');
-        if (fifaData[i]["Year"]===year && fifaData[i]["Stage"] === stage){
-          console.log(fifaData[i][output]);
-        }
-      }
-}
 
+function getData(arr, year, stage, output){
+    for (let i =0;i<arr.length;i++){
+        // console.log('-----');
+        if (arr[i]["Year"]===year && arr[i]["Stage"] === stage){
+        //   console.log(arr[i][output]);
+          return arr[i][output];
+        }
+     }
+     
+}
+const newArr = fifaData.filter(function(item){
+
+    return item["Year"]===2014 && item["Stage"] === "Final" ;
+
+  });
+console.log ('Task 1');
 //(a) Home Team name for 2014 world cup final
-getData(2014, "final", "Home Team Name");
+let homeTN = getData(newArr, 2014, "Final", "Home Team Name");
+console.log("Home Team name: "+ homeTN);
 //(b) Away Team name for 2014 world cup final
+let awayTN = getData(newArr, 2014, "Final", "Away Team Name");
+console.log("Away Team name: "+ awayTN);
 
 //Home Team goals for 2014 world cup final
+let homeTG = getData(newArr, 2014, "Final", "Home Team Goals");
+console.log("Home Team goals: "+ homeTG);
 
 //Away Team goals for 2014 world cup final
-
+let awayTG = getData(newArr, 2014, "Final", "Away Team Goals");
+console.log("Away Team goals: "+ awayTG);
 //Winner of 2014 world cup final */
-
+if (homeTG>awayTG){
+    console.log('Winner: '+ homeTN);
+} else 
+    console.log('Wionner:'+ awayTN);
   
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
+console.log('Task 2');
+function getFinals(data) {
 
-function getFinals(/* code here */) {
+    const newArr = data.filter(function(item){
 
-    /* code here */
+        return item["Stage"] === "Finals" ;
+    
+      });
 
 };
 
